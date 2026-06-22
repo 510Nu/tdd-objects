@@ -11,6 +11,7 @@
  * getCohort({cohort: 3476, name: "Charlie"}); // 3476
  */
 export function getCohort(student) {
+  return student.cohort;
   // TODO
 }
 
@@ -30,9 +31,13 @@ export function getCohort(student) {
  * sortStudents({cohort: 1, name: "Alice"}, {cohort: 2, name: "Alice"}); // {cohort: 1, name: "Alice"}
  */
 export function sortStudents(studentA, studentB) {
+  if (studentA.name > studentB.name) {
+    return studentB;
+  } else {
+    return studentA;
+  }
   // TODO
 }
-
 /**
  * @typedef {{color: string, icon: string}} Flag
  * @param {string} color
@@ -47,6 +52,10 @@ export function sortStudents(studentA, studentB) {
  * makeFlag("yellow", "triangle"); // { color: "yellow", icon: "triangle" }
  */
 export function makeFlag(color, icon) {
+  return {
+    color: color,
+    icon: icon,
+  };
   // TODO
 }
 
@@ -63,6 +72,9 @@ export function makeFlag(color, icon) {
  * increment({value: -5}); // {value: -4}
  */
 export function increment(count) {
+  return {
+    value: count.value + 1,
+  };
   // TODO
 }
 
@@ -91,6 +103,12 @@ export function increment(count) {
  */
 export function getTaxicabDistance(from, to) {
   // TODO
+
+  let xDistance = Math.abs(from.x - to.x);
+
+  let yDistance = Math.abs(from.y - to.y);
+
+  return xDistance + yDistance;
 }
 
 /**
@@ -107,6 +125,18 @@ export function getTaxicabDistance(from, to) {
  */
 export function getHerbivores(animals) {
   // TODO
+
+  let herbivoreList = [];
+
+  for (let i = 0; i < animals.length; i++) {
+    let currentAnimal = animals[i];
+
+    if (currentAnimal.isHerbivore === true) {
+      herbivoreList.push(currentAnimal);
+    }
+  }
+
+  return herbivoreList;
 }
 
 /**
@@ -123,6 +153,17 @@ export function getHerbivores(animals) {
  */
 export function getCarnivoreNames(animals) {
   // TODO
+
+  let carnivoreNamesList = [];
+
+  for (let i = 0; i < animals.length; i++) {
+    let currentAnimal = animals[i];
+
+    if (currentAnimal.isCarnivore === true) {
+      carnivoreNamesList.push(currentAnimal.name);
+    }
+  }
+  return carnivoreNamesList;
 }
 
 /**
@@ -144,6 +185,16 @@ export function getCarnivoreNames(animals) {
  */
 export function getTotalCost(cart) {
   // TODO
+
+  let totalCost = 0;
+
+  for (let i = 0; i < cart.length; i++) {
+    let currentItem = cart[i];
+
+    totalCost += currentItem.quantity * currentItem.price;
+  }
+
+  return totalCost;
 }
 
 /**
@@ -164,6 +215,14 @@ export function getTotalCost(cart) {
  */
 export function zip(keys, values) {
   // TODO
+
+  let result = {};
+
+  for (let i = 0; i < keys.length; i++) {
+    result[keys[i]] = values[i];
+  }
+
+  return result;
 }
 
 /**
@@ -180,4 +239,18 @@ export function zip(keys, values) {
  */
 export function countCharacters(word) {
   // TODO
+
+  let counts = {};
+
+  for (let i = 0; i < word.length; i++) {
+    let char = word[i];
+
+    if (counts[char]) {
+      counts[char] += 1;
+    } else {
+      counts[char] = 1;
+    }
+  }
+
+  return counts;
 }
